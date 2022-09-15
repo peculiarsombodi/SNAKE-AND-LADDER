@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 2rem;
+        }
+
+        .fea {
+            font-size: 1.5rem;
+            color: #685a0a;
+        }
+
+        .key {
+            background-color: white;
+            padding: 0.2rem;
+            border-radius: 1rem;
+            width: 20rem;
+            font-size: 1.5rem;
+            color: #5c3604;
+        }
+
+        body {
+            background-color: darkkhaki;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0px 20px;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            width: 60%;
+            display: flex;
+            flex-wrap: wrap-reverse;
+            padding: 1rem 0rem;
+            background-color: #443f22;
+        }
+
+        .ans {
+            width: 20%;
+        }
+
+        .lol {
+            color: gold;
+            width: 9%;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            border: 1px solid rgb(255, 215, 0);
+            background-color: #5c3604;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+
+        #die {
+            width: 5rem;
+            height: 5rem;
+            font-size: 2.3rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            box-shadow: -2px 2px 184px 19px rgba(255, 215, 0, 0.98);
+            border-radius: 1rem;
+            color: gold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+
+        #diey {
+            width: 5rem;
+            height: 5rem;
+            font-size: 2.3rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            box-shadow: -2px 2px 184px 19px rgba(255, 215, 0, 0.98);
+            border-radius: 1rem;
+            color: gold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #start {
+            cursor: pointer;
+            padding: 1rem;
+            width: fit-content;
+            border-radius: 1rem;
+            letter-spacing: 0.5rem;
+            margin-top: 2rem;
+            border: none;
+            box-shadow: -2px 2px 184px 19px rgba(255, 215, 0, 0.98);
+
+        }
+
+        #starty {
+            cursor: pointer;
+            padding: 1rem;
+            width: fit-content;
+            border-radius: 1rem;
+            letter-spacing: 0.5rem;
+            border: none;
+            margin-top: 2rem;
+            box-shadow: -2px 2px 184px 19px rgba(255, 215, 0, 0.98);
+
+        }
+
+        #continue {
+            cursor: pointer;
+            padding: 1rem;
+            width: fit-content;
+            border-radius: 1rem;
+            letter-spacing: 0.5rem;
+            border: none;
+            margin-top: 2rem;
+            box-shadow: -2px 2px 184px 19px rgba(255, 215, 0, 0.98);
+            display: none;
+        }
+
+        #continuey {
+            cursor: pointer;
+            padding: 1rem;
+            width: fit-content;
+            border-radius: 1rem;
+            letter-spacing: 0.5rem;
+            border: none;
+            margin-top: 2rem;
+            box-shadow: -2px 2px 184px 19px rgba(255, 215, 0, 0.98);
+            display: none;
+        }
+
+        #ladder8 {
+            position: absolute;
+            transform: rotate(-10deg);
+            margin-top: -2rem;
+            margin-left: -8rem;
+        }
+
+        #ladder9 {
+            position: absolute;
+            transform: rotate(-70deg);
+            margin-top: -18rem;
+            margin-left: 9rem;
+            width: 5rem;
+            height: 17rem;
+        }
+
+        #snake3 {
+            position: absolute;
+            transform: rotate();
+            margin-left: 10rem;
+            margin-top: -4.5rem;
+        }
+
+        #snake11 {
+            position: absolute;
+            margin-top: -19rem;
+            margin-left: -13rem;
+            transform: rotate(180deg);
+        }
+
+        #player_one {
+            margin-top: 12rem;
+            width: 15%;
+            border: 1px solid black;
+            height: fit-content;
+            background-color: #443f22;
+            text-align: center;
+            align-content: center;
+            padding: 0.5rem;
+            background-color: red;
+        }
+
+        #player_two {
+            margin-top: 12rem;
+            width: 15%;
+            border: 1px solid black;
+            height: fit-content;
+            background-color: #443f22;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: green;
+            align-content: center;
+        }
+
+        #player2 {
+            display: none;
+        }
+         footer{
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding-top: 10rem;
+            font-size: 2.5rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            font-weight: bolder;
+         }
+        /*style.display = "none"id black;
+            width: 7rem;
+            height: 7rem;
+            display: none;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <nav>
+        <div class="fea">FEATURES</div>
+        <div class="key">
+            <ul>
+                <li>The red box represent the player</li>
+                <li>You can only start until you roll a dice of 6</li>
+            </ul>
+        </div>
+    </nav> -->
+    <main id="winner">
+        <div id="player_two">
+            <div style="display: flex;justify-content:center;">
+                <div id="diey"></div>
+            </div>
+            <div id="player2">
+                <button id="starty" onclick="playy()">START 2</button>
+                <button id="continuey" onclick="nexty()">continue 2</button>
+            </div>
+        </div>
+        <div class="box" id="show">
+            <img src="ladder8-removebg-preview.png" alt="" id="ladder8">
+            <img src="ladder9-removebg-preview.png" alt="" id="ladder9">
+            <img src="snake3-removebg-preview.png" alt="" id="snake3">
+            <img src="snake11-removebg-preview.png" alt="" id="snake11">
+        </div>
+        
+            <div id="player_one">
+                <div style="display: flex;justify-content:center;">
+                    <div id="die"></div>
+                </div>
+                <div id="player1">
+                    <button id="start" onclick="play()">START 1</button>
+                    <button id="continue" onclick="next()">continue 1</button>
+                </div>
+            </div>
+    </main>
+
+    <footer id="last">
+        WE HAVE A WINNER
+    </footer>
+</body>
+<script>
+    let n = 1;
+    let p = 0;
+    let last = document.getElementById("last")
+    let winner = document.getElementById("winner")
+    let player_one = document.getElementById("player1")
+    let playerOne = document.getElementById("player_one")
+    let playerTwo = document.getElementById("player_two")
+    let player_two = document.getElementById("player2")
+    let start = document.getElementById("start")
+    let starty = document.getElementById("starty")
+    let contd = document.getElementById("continue")
+    let contdy = document.getElementById("continuey")
+    let die = document.getElementById("die")
+    let diey = document.getElementById("diey")
+    let show = document.getElementById("show")
+    let dices = Math.floor(Math.random() * 6) + 1;
+    for (let i = 1; i <= 100; i++) {
+        show.innerHTML +=
+            `<div class="lol" id="marvel${i}"> ${i} </div>`
+        // console.log(`<button id="marvel${i}">${i}</button>`);
+    }
+    function play(params) {
+        let dices = Math.floor(Math.random() * 6) + 1
+        console.log(dices);
+        die.innerHTML = dices
+        if (dices == 6) {
+            document.getElementById(`marvel${1}`).style.backgroundColor = "red"
+            die.innerHTML = dices
+            contd.style.display = "block"
+            start.style.display = "none"
+            console.log(die.innerText);
+            console.log(dices);
+        }
+        player_one.style.display = "none"
+        player_two.style.display = "block"
+
+
+    }
+    function next() {
+        let dices = Math.floor(Math.random() *6) + 1;
+        console.log(dices);
+        die.innerHTML = dices
+        document.getElementById(`marvel${1}`).style.backgroundColor = "#5c3604"
+        // document.getElementById(`marvel${n}`).style.backgroundColor = "yellow"
+        if (n > 0) {
+            document.getElementById(`marvel${n}`).style.backgroundColor = "#5c3604"
+        }
+        console.log(n);
+        if (n <= 95) {
+        n = Number(n) + Number(dices)
+        document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        console.log(dices);
+        console.log(n);
+       }
+        if (n == 4) {
+            document.getElementById(`marvel${n}`).style.backgroundColor = "#5c3604"
+            n = 43
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 69) {
+            document.getElementById(`marvel${n}`).style.backgroundColor = "#5c3604"
+            n = 86
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 47) {
+            document.getElementById(`marvel${n}`).style.backgroundColor = "#5c3604"
+            n = 18
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 83) {
+            document.getElementById(`marvel${n}`).style.backgroundColor = "#5c3604"
+            n = 52
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+        else if (n == 95 && dices == 6) {
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+            winner.style.display = "none"
+            last.style.display = "block"
+        }
+
+        else if (n == 95 && dices !== 6) {
+            n = 95
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 96 && dices == 5) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (n == 96 && dices !== 5) {
+            n = 96
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 97 && dices == 4) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (n == 97 && dices !== 4) {
+            n = 97
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 98 && dices == 3) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (n == 98 && dices !== 3) {
+            n = 98
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+        else if (n == 99 && dices == 2) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (n == 99 && dices !== 2) {
+            n = 99
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+        else if (n == 100 && dices == 1) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (n == 100 && dices !== 1) {
+            n = 100
+            document.getElementById(`marvel${n}`).style.backgroundColor = "red"
+        }
+
+
+        player_one.style.display = "none"
+        player_two.style.display = "block"
+
+        // for (let i = 1; i <= 100; i++) {
+        //     if (i < n || i > n) {
+        //         document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        //     }
+        // }
+    }
+
+    function playy() {
+        let dices = Math.floor(Math.random() *6) + 1;
+        console.log(dices);
+        diey.innerHTML = dices
+        if (dices == 6) {
+            document.getElementById(`marvel${1}`).style.backgroundColor = "green"
+            diey.innerHTML = dices
+            contdy.style.display = "block"
+            starty.style.display = "none"
+            console.log(diey.innerText);
+            console.log(dices);
+        }
+        player_two.style.display = "none"
+        player_one.style.display = "block"
+    }
+
+    function nexty() {
+        let dices = Math.floor(Math.random() *6) + 1;
+        console.log(dices);
+        diey.innerHTML = dices
+        document.getElementById(`marvel${1}`).style.backgroundColor = "#5c3604"
+        // document.getElementById(`marvel${n}`).style.backgroundColor = "yellow"
+        if (p > 0) {
+            document.getElementById(`marvel${p}`).style.backgroundColor = "#5c3604"
+        }
+        console.log(p);
+        if (p <= 95) {
+        p = Number(p) + Number(dices)
+        document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        console.log(dices);
+        console.log(p);
+       }
+        if (p == 4) {
+            document.getElementById(`marvel${p}`).style.backgroundColor = "#5c3604"
+            p = 43
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 69) {
+            document.getElementById(`marvel${p}`).style.backgroundColor = "#5c3604"
+            p = 86
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 47) {
+            document.getElementById(`marvel${p}`).style.backgroundColor = "#5c3604"
+            p = 18
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 83) {
+            document.getElementById(`marvel${p}`).style.backgroundColor = "#5c3604"
+            p = 52
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+        else if (p == 95 && dices == 6) {
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+            winner.style.display = "none"
+            last.style.display = "block"
+        }
+
+        else if (p == 95 && dices !== 6) {
+            p = 95
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 96 && dices == 5) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (p == 96 && dices !== 5) {
+            p = 96
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 97 && dices == 4) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (p == 97 && dices !== 4) {
+            p = 97
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 98 && dices == 3) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (p == 98 && dices !== 3) {
+            p = 98
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+        else if (p == 99 && dices == 2) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (p == 99 && dices !== 2) {
+            p = 99
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+        else if (p == 100 && dices == 1) {
+            winner.style.display = "none"
+            last.style.display = "block"
+            document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        }
+
+        else if (p == 100 && dices !== 1) {
+            p = 100
+            document.getElementById(`marvel${p}`).style.backgroundColor = "green"
+        }
+
+
+        player_one.style.display = "block"
+        player_two.style.display = "none"
+
+        // for (let i = 1; i <= 100; i++) {
+        //     if (i <  || i > n) {
+        //         document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        //     }
+        // }
+    }
+
+
+    
+
+        // for (let i = 1; i <= 100; i++) {
+        //     if (i < p) {
+        //         document.getElementById(`marvel${i}`).style.backgroundColor = "#5c3604"
+        //     }
+        // }
+    // }
+
+</script>
+
+</html>
